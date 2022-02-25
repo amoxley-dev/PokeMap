@@ -32,3 +32,24 @@ In addition, this project will include:
 - When user clicks on Pokemon name in sidebar they will be able to get more info about Pokemon.
 - Info includes encounter rates & methods, PokeDex number, type, and sprite image.
 
+## Technologies
+
+- JavaScript
+- HTML5
+- CSS3
+- Webpack
+- Babel
+- PokeApi
+- Leaflet
+
+## Implementation Timeline
+
+- Day 1: Research Leaflet/css to understand how to create an interactable map. Have a map that correctly sends back coordinates clicked on
+- Day 2: Work on Pokemon sidebar list. Make is scalable for any number of inputs. Just name, pokedex num, and if possible small sprite
+- Day 3: Connect map coordinates to pokemon at coordinate and make those Pokemon appear in the list
+- Day 4: Make Pokemon info box apear when name is clicked on, determine parameters and fill them in.
+- Day 5: Optimize what is currently there. Fixing any bugs.
+- Day 6: Use CSS to stlye.
+- Day 7: Impliment finishing touches.
+
+
