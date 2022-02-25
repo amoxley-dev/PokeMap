@@ -1,27 +1,17 @@
 {
-  "name": "poke-map",
-  "version": "1.0.0",
-  "description": "PokeMap is an interactive Pokemon map where the user can see which pokemon are catcheable by clicking on different areas of on the map. The map featured in this project will be the one from Sinnoh and include information pertaining to Generation IV of Pokemon.If the user wants additional information about the Pokemon they can then click on the Pokemon and find information such as encounter methods, encounter rates, and more!",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/amoxley-dev/PokeMap.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/amoxley-dev/PokeMap/issues"
-  },
-  "homepage": "https://github.com/amoxley-dev/PokeMap#readme",
   "devDependencies": {
+    "webpack": "^5.69.1"
+  },
+  "dependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "babel-loader": "^8.2.3",
-    "webpack": "^5.69.1",
+    "core-js": "^3.21.1",
+    "css-loader": "^6.6.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
     "webpack-cli": "^4.9.2"
   }
 }
