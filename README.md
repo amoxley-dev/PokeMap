@@ -17,3 +17,18 @@ In addition, this project will include:
 - A Brief explanation when the user opens the webpage
 
 ### Wireframe
+
+<img width="809" alt="pokemap wireframe: no pokemon selected" src="https://user-images.githubusercontent.com/amoxley-dev/PokeMap/main/.github/PokeMap1.png">
+
+- Nav links include links to this project's Github repo, my LinkedIn, and PokeApi.
+- Logo is on upper left corner.
+- Map is in center of screen, user will be able to click on different portions of map.
+- Clickable portions of map will change mouse pointer to indacate clickability.
+- Scrollable Pokemon list on left(just names).
+- Will be empty when page loads.
+
+<img width="809" alt="pokemap wireframe: no pokemon selected" src="https://user-images.githubusercontent.com/amoxley-dev/PokeMap/main/.github/PokeMap2.png">
+
+- When user clicks on Pokemon name in sidebar they will be able to get more info about Pokemon.
+- Info includes encounter rates & methods, PokeDex number, type, and sprite image.
+
