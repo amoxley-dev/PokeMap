@@ -1,6 +1,9 @@
-const Map = require("./scripts/map")
+import Map from "./scripts/map.js"
+import Location from "./scripts/location.js"
 
 document.addEventListener("DOMContentLoaded", () => {
-    let map = new Map();
-    console.log('hello')
+  console.log('loaded')
+  let bounds = bounds = [[0,0], [690,975]]
+  let locations = new Location;
+  let map = new Map(bounds, locations);
 });
