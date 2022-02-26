@@ -5,18 +5,23 @@ class Map {
     console.log('map loaded')
     this.bounds = bounds;
     this.locations = new Location;
-    
+
     this.map = this.createMap(this.bounds);
     this.addLocations(this.locations);
   }
+//make a click function in here to set currentLocation
+
+
 
   createMap(bounds) {
     let map = L.map('map', {
       crs: L.CRS.Simple,
-      dragging: false,
+      dragging: true,
       maxBounds: bounds,
-      zoomControl: false,
-      maxZoom: 0 
+      zoomControl: true,
+      minZoom: 0.075,
+      maxZoom: .5,
+      maxBoundsViscosity: 1.0
     });
 
     L.imageOverlay('./src/images/sinnoh-map.jpg', bounds).addTo(map);
