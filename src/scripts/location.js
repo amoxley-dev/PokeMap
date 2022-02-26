@@ -1,27 +1,60 @@
 import { DICTIONARY } from "./dictionary";
+const routeOptions = {color: "#ff9333", weight: 1, opacity: 0.8, fillOpacity: 0.2}
+const townOptions = {color: "#f11e00", weight: 1, opacity: 0.8, fillOpacity: 0.2}
+
 class Locations {
   constructor() {
     this.locations = [];
-    this.firstRectBounds();
-    console.log(DICTIONARY)
+  
+    for (const prop in DICTIONARY) {
+      let location = DICTIONARY[prop];
+      let locMethod = DICTIONARY[prop].method;
+      this.addRoutes(location, locMethod);
+    }
+
+    this.addHoverEffects();
+
     return this.locations;
   }
 
+  //Create locations
   addRouteRect(bounds) {
-
-    let rectangle = L.rectangle(bounds, {color: "#ff7800", weight: 1});
-    this.locations.push(rectangle);
+    return L.rectangle(bounds, routeOptions);
   }
 
-  // addRoutePoly() {
+  addRoutePoly(bounds) {
+    return L.polygon(bounds, routeOptions);
+  }
 
-  // }
+  createTownRect(bounds) {
+    return L.rectangle(bounds, townOptions);
+  }
 
-  //make an add routes function that iterates through DICTIONARY
+  addRoutes(location, locMethod) {
+    let newLocation = null;
+    switch (locMethod) {
+      case 'routeRect':
+        newLocation = this.addRouteRect(location.bounds);
+        break;
+      case 'routePoly':
+        newLocation = this.addRoutePoly(location.bounds);
+        break;
+      case 'townRect':
+        newLocation = this.createTownRect(location.bounds);
+        break;
+    }
 
-  firstRectBounds() {
-    let rectBounds = [[345, 300], [600, 0]];
-    this.addRouteRect(rectBounds);
+    this.locations.push(newLocation);
+  }
+
+  //Hover Functions
+
+  
+
+  addHoverEffects() {
+    for (let i = 0; i < this.locations.length; i++) {
+      
+    }
   }
 }
 
