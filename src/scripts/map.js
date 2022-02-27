@@ -16,7 +16,7 @@ class Map {
   createMap(bounds) {
     let map = L.map('map', {
       crs: L.CRS.Simple,
-      dragging: true,
+      dragging: false,
       maxBounds: bounds,
       zoomControl: false,
       minZoom: 0.075,

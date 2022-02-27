@@ -52,6 +52,10 @@ table {
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/view.css ***!
   \***************************************************************************************************/
+h1 {
+  height: 43px;
+}
+
 #main-content {
   display: flex;
   justify-content: space-between;
@@ -59,7 +63,8 @@ table {
 
 #map {
   width: 975px;
-  height: 670px;
+  height: 665px;
+  border-radius: 8px;
   background: #a9cde6;
 }
 
