@@ -28,20 +28,6 @@ class Locations {
   }
 
   //Create locations
-  addRouteRect(bounds) {
-    return 
-  }
-
-  addRoutePoly(bounds) {
-    return 
-  }
-
-  createTownRect(bounds) {
-    return 
-  }
-
-
-
   addRoutes(locOptions) {
     let newLocation = null;
     switch (locOptions.method) {
@@ -62,6 +48,9 @@ class Locations {
         break;
       case 'miscRect':
         newLocation = L.rectangle(locOptions.bounds, miscOptions);
+        break;
+      case 'miscPoly':
+        newLocation = L.polygon(locOptions.bounds, miscOptions);;
         break;
     }
 

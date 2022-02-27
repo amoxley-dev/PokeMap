@@ -18,9 +18,9 @@ class Map {
       crs: L.CRS.Simple,
       dragging: true,
       maxBounds: bounds,
-      zoomControl: true,
+      zoomControl: false,
       minZoom: 0.075,
-      maxZoom: .5,
+      maxZoom: 0,
       maxBoundsViscosity: 1.0
     });
 
