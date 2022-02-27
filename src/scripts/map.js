@@ -9,14 +9,11 @@ class Map {
     this.map = this.createMap(this.bounds);
     this.addLocations(this.locations.locations);
   }
-//make a click function in here to set currentLocation
-
-
 
   createMap(bounds) {
     let map = L.map('map', {
       crs: L.CRS.Simple,
-      dragging: false,
+      dragging: true,
       maxBounds: bounds,
       zoomControl: false,
       minZoom: 0.075,
