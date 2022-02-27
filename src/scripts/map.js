@@ -7,7 +7,7 @@ class Map {
     this.locations = new Location;
 
     this.map = this.createMap(this.bounds);
-    this.addLocations(this.locations);
+    this.addLocations(this.locations.locations);
   }
 //make a click function in here to set currentLocation
 

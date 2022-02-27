@@ -12,11 +12,11 @@ const miscHovOptions = {color: "#75ffca", weight: 1.5, opacity: 1, fillOpacity: 
 class Locations {
   constructor() {
     this.locations = [];
+    this.currentLoc = undefined;
 
     this.makeLocations();
     this.addHoverEffects();
 
-    return this.locations;
   }
 
   //iterates through Dictionary and inserts leaflet objects into this.locations
@@ -54,6 +54,7 @@ class Locations {
         break;
     }
 
+    newLocation.options.name = locOptions.name;
     this.locations.push(newLocation);
   }
 
@@ -61,6 +62,10 @@ class Locations {
   hoverOver(location) {
     let func = null
 
+    location.on('mouseover', function(e) {
+      this.currentLoc = location.options.name;
+      console.log(this.currentLoc)
+    })
     switch (location.options.color) {
       case routeOptions.color:
         location.on('mouseover', function(e) {
