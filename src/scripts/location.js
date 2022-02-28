@@ -1,22 +1,26 @@
 import { DICTIONARY } from "./dictionary";
 
-const routeOptions = {color: "#ff9333", weight: 1, opacity: 0.8, fillOpacity: 0.2}
-const routeHovOptions = {color: "#ff7333", weight: 1.5, opacity: 1, fillOpacity: 0.3}
-const townOptions = {color: "#f11e00", weight: 1, opacity: 0.8, fillOpacity: 0.2}
-const townHovOptions = {color: "#eb0008", weight: 1.5, opacity: 1, fillOpacity: 0.3}
-const lakeOptions = {color: "#1c24ff", weight: 1, opacity: 0.8, fillOpacity: 0.2}
-const lakeHovOptions = {color: "#3800ca", weight: 1.5, opacity: 1, fillOpacity: 0.3}
-const miscOptions = {color: "#c7ffd5", weight: 1, opacity: 0.8, fillOpacity: 0.2}
-const miscHovOptions = {color: "#75ffca", weight: 1.5, opacity: 1, fillOpacity: 0.3}
+const routeOptions = {color: "#ff9333", weight: 1, opacity: 0.8, fillOpacity: 0.2};
+const routeHovOptions = {color: "#ff7333", weight: 1.5, opacity: 1, fillOpacity: 0.3};
+const townOptions = {color: "#f11e00", weight: 1, opacity: 0.8, fillOpacity: 0.2};
+const townHovOptions = {color: "#eb0008", weight: 1.5, opacity: 1, fillOpacity: 0.3};
+const lakeOptions = {color: "#1c24ff", weight: 1, opacity: 0.8, fillOpacity: 0.2};
+const lakeHovOptions = {color: "#3800ca", weight: 1.5, opacity: 1, fillOpacity: 0.3};
+const miscOptions = {color: "#c7ffd5", weight: 1, opacity: 0.8, fillOpacity: 0.2};
+const miscHovOptions = {color: "#75ffca", weight: 1.5, opacity: 1, fillOpacity: 0.3};
+const selectedOptions = { color: '#39FF14', weight: 2, opacity: 1, fillOpacity: 0.3};
+
+let currentLoc = undefined;
+let selectedLoc = undefined;
+let prevLoc = undefined;
 
 class Locations {
   constructor() {
     this.locations = [];
-    this.currentLoc = undefined;
 
     this.makeLocations();
     this.addHoverEffects();
-
+    this.addClickEffects();
   }
 
   //iterates through Dictionary and inserts leaflet objects into this.locations
@@ -33,24 +37,31 @@ class Locations {
     switch (locOptions.method) {
       case 'routeRect':
         newLocation = L.rectangle(locOptions.bounds, routeOptions);
+        newLocation.options.resetStlye = routeOptions;
         break;
       case 'routePoly':
-        newLocation = L.polygon(locOptions.bounds, routeOptions);;
+        newLocation = L.polygon(locOptions.bounds, routeOptions);
+        newLocation.options.resetStlye = routeOptions;
         break;
       case 'townRect':
         newLocation = L.rectangle(locOptions.bounds, townOptions);
+        newLocation.options.resetStlye = townOptions;
         break;
       case 'townPoly':
-        newLocation = L.polygon(locOptions.bounds, townOptions);;
+        newLocation = L.polygon(locOptions.bounds, townOptions);
+        newLocation.options.resetStlye = townOptions;
         break;
       case 'lakeRect':
         newLocation = L.rectangle(locOptions.bounds, lakeOptions);
+        newLocation.options.resetStlye = lakeOptions;
         break;
       case 'miscRect':
         newLocation = L.rectangle(locOptions.bounds, miscOptions);
+        newLocation.options.resetStlye = miscOptions;
         break;
       case 'miscPoly':
-        newLocation = L.polygon(locOptions.bounds, miscOptions);;
+        newLocation = L.polygon(locOptions.bounds, miscOptions);
+        newLocation.options.resetStlye = miscOptions;
         break;
     }
 
@@ -60,62 +71,59 @@ class Locations {
 
   //Hover Functions
   hoverOver(location) {
-    let func = null
+    let options = routeHovOptions;
 
-    location.on('mouseover', function(e) {
-      this.currentLoc = location.options.name;
-      console.log(this.currentLoc)
-    })
+    let func = function(e) {
+      currentLoc = e.target;
+      // console.log(currentLoc.options.name);
+      if (currentLoc !== selectedLoc) {
+        e.target.setStyle(options);
+      }
+    };
+    
     switch (location.options.color) {
       case routeOptions.color:
-        location.on('mouseover', function(e) {
-          e.target.setStyle(routeHovOptions)
-        });
+        options = routeHovOptions;
         break;
       case townOptions.color:
-        location.on('mouseover', function(e) {
-          e.target.setStyle(townHovOptions)
-        });
+        options = townHovOptions;
         break;
       case lakeOptions.color:
-        location.on('mouseover', function(e) {
-          e.target.setStyle(lakeHovOptions)
-        });
+        options = lakeHovOptions;
         break;
       case miscOptions.color:
-        location.on('mouseover', function(e) {
-          e.target.setStyle(miscHovOptions)
-        });
+        options = miscHovOptions;
         break;
     }
 
-    /*Why does below not work? */
-    // location.on('mouseover', func(e));
+    location.on('mouseover', func);
   }
 
   hoverOut(location) {
+    let options = selectedOptions;
+
     switch (location.options.color) {
       case routeOptions.color:
-        location.on('mouseout', function(e) {
-          e.target.setStyle(routeOptions)
-        });
+        options = routeOptions
         break;
       case townOptions.color:
-        location.on('mouseout', function(e) {
-          e.target.setStyle(townOptions)
-        });
+        options = townOptions;
         break;
       case lakeOptions.color:
-        location.on('mouseout', function(e) {
-          e.target.setStyle(lakeOptions)
-        });
+        options = lakeOptions;
         break;
       case miscOptions.color:
-        location.on('mouseout', function(e) {
-          e.target.setStyle(miscOptions)
-        });
+        options = miscOptions;
         break;
     }
+
+    let func = function(e) {
+      if (currentLoc !== selectedLoc) {
+        e.target.setStyle(options);
+      }
+    };
+
+    location.on('mouseout', func);
   }
 
   addHoverEffects() {
@@ -123,6 +131,29 @@ class Locations {
       let location = this.locations[i];
       this.hoverOver(location);
       this.hoverOut(location);
+    }
+  }
+
+  //click functions
+  onClick(location) {
+    let func = function(e) {
+      if (prevLoc) {
+        let reset = prevLoc.options.resetStlye
+        prevLoc.setStyle(reset);
+      }
+      selectedLoc = currentLoc;
+      console.log(selectedLoc.options.name);
+      e.target.setStyle(selectedOptions)
+      prevLoc = selectedLoc;
+    }
+
+    location.on('click', func)
+  }
+
+  addClickEffects() {
+    for (let i = 0; i < this.locations.length; i++) {
+      let location = this.locations[i]
+      this.onClick(location);
     }
   }
 }
