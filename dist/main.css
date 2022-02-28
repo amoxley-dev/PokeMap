@@ -53,19 +53,51 @@ table {
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/view.css ***!
   \***************************************************************************************************/
 h1 {
-  height: 43px;
+  height: 60px;
+}
+
+body {
+  background-color: rgb(206, 60, 72);
+  margin: 0px 30px;
 }
 
 #main-content {
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 #map {
-  width: 893px;
+  width: 60%;
   height: 630px;
+  border: 10px rgba(0, 0, 0, 0) solid;
   border-radius: 8px;
-  background: #a9cde6;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#pokemon-list {
+  height: 630px;
+  width: 25%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 10px rgba(0, 0, 0, 0) solid;
+  border-radius: 8px;
+  overflow: scroll;
+}
+
+#pokemon-list::-webkit-scrollbar {
+  width: 20px;
+  height: 0;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#pokemon-list::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #000;
+}
+
+li {
+  padding: 20px;
 }
 
 /*!*************************************************************************************************************************************!*\
