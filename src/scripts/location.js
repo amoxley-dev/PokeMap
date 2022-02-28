@@ -16,9 +16,10 @@ let selectedLoc = undefined;
 let prevLoc = undefined;
 
 class Locations {
-  constructor() {
+  constructor(pokelist) {
     this.locations = [];
-
+    this.pokelist = pokelist;
+    console.log(this.pokelist)
     this.makeLocations();
     this.addHoverEffects();
     this.addClickEffects();
@@ -74,7 +75,7 @@ class Locations {
   hoverOver(location) {
     let options = routeHovOptions;
 
-    let func = function(e) {
+    let func = (e) => {
       currentLoc = e.target;
       // console.log(currentLoc.options.name);
       if (currentLoc !== selectedLoc) {
@@ -118,7 +119,7 @@ class Locations {
         break;
     }
 
-    let func = function(e) {
+    let func = (e) => {
       if (currentLoc !== selectedLoc) {
         e.target.setStyle(options);
       }
@@ -137,18 +138,18 @@ class Locations {
 
   //click functions
   onClick(location) {
-    let func = function(e) {
+    let func = (e) => {
       if (prevLoc) {
         let reset = prevLoc.options.resetStlye
         prevLoc.setStyle(reset);
       }
       selectedLoc = currentLoc;
+      this.pokelist.populateList(selectedLoc);
       console.log(selectedLoc.options.name);
       e.target.setStyle(selectedOptions)
       prevLoc = selectedLoc;
     }
-
-    location.on('click', func)
+    let click = location.on('click', func);
   }
 
   addClickEffects() {
