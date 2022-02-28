@@ -75,7 +75,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
-#pokemon-list {
+.pokemon-sidebar {
   height: 630px;
   width: 25%;
   background: rgba(0, 0, 0, 0.5);
@@ -84,14 +84,14 @@ body {
   overflow: scroll;
 }
 
-#pokemon-list::-webkit-scrollbar {
-  width: 20px;
+.pokemon-sidebar::-webkit-scrollbar {
+  width: 10px;
   height: 0;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#pokemon-list::-webkit-scrollbar-thumb {
+.pokemon-sidebar::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background: #000;
 }

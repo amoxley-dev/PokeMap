@@ -1,14 +1,15 @@
 import { DICTIONARY } from "./dictionary";
+import Pokelist from "./pokelist.js";
 
-const routeOptions = {color: "#ff9333", weight: 1, opacity: 0.8, fillOpacity: 0.2};
-const routeHovOptions = {color: "#ff7333", weight: 1.5, opacity: 1, fillOpacity: 0.3};
-const townOptions = {color: "#f11e00", weight: 1, opacity: 0.8, fillOpacity: 0.2};
-const townHovOptions = {color: "#eb0008", weight: 1.5, opacity: 1, fillOpacity: 0.3};
-const lakeOptions = {color: "#1c24ff", weight: 1, opacity: 0.8, fillOpacity: 0.2};
-const lakeHovOptions = {color: "#3800ca", weight: 1.5, opacity: 1, fillOpacity: 0.3};
-const miscOptions = {color: "#c7ffd5", weight: 1, opacity: 0.8, fillOpacity: 0.2};
-const miscHovOptions = {color: "#75ffca", weight: 1.5, opacity: 1, fillOpacity: 0.3};
-const selectedOptions = { color: '#39FF14', weight: 2, opacity: 1, fillOpacity: 0.3};
+const routeOptions = {color: "#ffb552", weight: 2, opacity: 0.8, fillOpacity: 0.2};
+const routeHovOptions = {color: "#ff7333", weight: 3, opacity: 1, fillOpacity: 0.3};
+const townOptions = {color: "#f11e00", weight: 2, opacity: 0.8, fillOpacity: 0.2};
+const townHovOptions = {color: "#eb0008", weight: 3, opacity: 1, fillOpacity: 0.3};
+const lakeOptions = {color: "#1c24ff", weight: 2, opacity: 0.8, fillOpacity: 0.2};
+const lakeHovOptions = {color: "#3800ca", weight: 3, opacity: 1, fillOpacity: 0.3};
+const miscOptions = {color: "#29ffdd", weight: 2, opacity: 0.8, fillOpacity: 0.2};
+const miscHovOptions = {color: "#03b4ff", weight: 3, opacity: 1, fillOpacity: 0.3};
+const selectedOptions = { color: '#39FF14', weight: 3.5, opacity: 1, fillOpacity: 0.3};
 
 let currentLoc = undefined;
 let selectedLoc = undefined;

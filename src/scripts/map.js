@@ -1,10 +1,8 @@
-import Location from "./location.js"
-
 class Map {
-  constructor(bounds) {
+  constructor(bounds, locations) {
     console.log('map loaded')
     this.bounds = bounds;
-    this.locations = new Location;
+    this.locations = locations;
 
     this.map = this.createMap(this.bounds);
     this.addLocations(this.locations.locations);

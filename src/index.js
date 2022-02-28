@@ -1,7 +1,12 @@
-import Map from "./scripts/map.js"
+import Map from "./scripts/map.js";
+import Location from "./scripts/location.js";
+import Pokelist from "./scripts/pokelist.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log('loaded');
-  let bounds = [[0,0], [640,893]];
-  let map = new Map(bounds);
+  const bounds = [[0,0], [640,893]];
+  const pokeList = document.getElementById("pokemon-list");
+  let pokemonlist = new Pokelist(pokeList);
+  let locations = new Location;
+  let map = new Map(bounds, locations);
 });
