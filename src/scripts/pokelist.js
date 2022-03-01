@@ -8,26 +8,48 @@ class Pokelist {
 
   async populateList(location) {
     this.pokeList.innerHTML = '';
+    this.pokeNames = [];
+    this.pokemon = {};
     const li = document.createElement('li')
     
     if (!location) {
-      li.innerHTML = `Click On Map Location`
+      li.innerHTML = `Select a Location`
       this.pokeList.append(li);
       return;
     } 
     
-    let urls = location.options.urls;
-    let locations = await this.getLocation(urls);
-    // console.log(locations);
-    this.pokeNames = []
+    let locations = await this.getLocation(location);
+
+    console.log(locations);
+    // console.log(!(locations instanceof Array))
+    if (!(locations instanceof Array)) {
+      li.innerHTML = `No Pokemon at ${locations}`
+      this.pokeList.append(li);
+      return;
+    }
+    
     for (let i = 0; i < locations.length; i++) { 
       let location = locations[i];
-      this.getPokemon(location.pokemon_encounters);
+      await this.getPokemon(location.pokemon_encounters);
+    }
+        
+    this.pokemon.sort;
+    const pokeId = Object.keys(this.pokemon);
+
+    for (let i = 0; i < pokeId.length; i++) {
+      let key = pokeId[i];
+      this.createPokemon(this.pokemon[key])
     }
   }
   
   //get location
-  async getLocation(urls) {
+  async getLocation(location) {
+  if (!location.options.urls) {
+    return location.options.name;
+  }    
+    
+    let urls = location.options.urls;
+
     const locations = [];
     for (let i = 0; i < urls.length; i++) {
       const res = await fetch(urls[i]);
@@ -48,11 +70,14 @@ class Pokelist {
         this.pokeNames.push(pokeInfo.pokemon.name);
         const res = await fetch(pokeInfo.pokemon.url);
         const pokemon = await res.json();
-        this.createPokemon(pokemon);
+        // console.log(pokemon.id);
+        this.pokemon[pokemon.id] = pokemon;
+        // this.createPokemon(pokemon);
       }
     }
+
   }
-  
+
   createPokemon(pokemon) {
     const pokemonEl = document.createElement('li');
     pokemonEl.classList.add('pokemon');
