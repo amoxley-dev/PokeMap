@@ -19,7 +19,6 @@ class Locations {
   constructor(pokelist) {
     this.locations = [];
     this.pokelist = pokelist;
-    console.log(this.pokelist)
     this.makeLocations();
     this.addHoverEffects();
     this.addClickEffects();
@@ -67,6 +66,7 @@ class Locations {
         break;
     }
 
+    newLocation.options.urls = locOptions.urls;
     newLocation.options.name = locOptions.name;
     this.locations.push(newLocation);
   }
@@ -145,11 +145,12 @@ class Locations {
       }
       selectedLoc = currentLoc;
       this.pokelist.populateList(selectedLoc);
-      console.log(selectedLoc.options.name);
+      // console.log(selectedLoc);
+      console.log(selectedLoc.options.urls);
       e.target.setStyle(selectedOptions)
       prevLoc = selectedLoc;
     }
-    let click = location.on('click', func);
+    location.on('click', func);
   }
 
   addClickEffects() {
