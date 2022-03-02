@@ -1,22 +1,21 @@
-const pokemonAPI = 'https://pokeapi.co/api/v2/pokemon/?offset=150&limit=150'
+import Modal from "./pokelist.js";
 
 class Pokelist {
   constructor(pokeList) {
     this.pokeList = pokeList
+    console.log("pokeList Loaded")
+    //causes stackoverflow when not in index.js
+    // new Modal;
     this.populateList();
   }
-
+  
   async populateList(location) {
+    if (!location) {return;} 
+    
     this.pokeList.innerHTML = '';
     this.pokeNames = [];
     this.pokemon = {};
     const li = document.createElement('li')
-    
-    if (!location) {
-      li.innerHTML = `Select a Location`
-      this.pokeList.append(li);
-      return;
-    } 
     
     let locations = await this.getLocation(location);
 
@@ -40,6 +39,11 @@ class Pokelist {
       let key = pokeId[i];
       this.createPokemon(this.pokemon[key])
     }
+
+    new Modal;
+    // const openButtons = document.querySelectorAll("[data-poke-id]");
+    // console.log(openButtons);
+    // new Modal(openButtons);
   }
   
   //get location
@@ -70,10 +74,11 @@ class Pokelist {
         this.pokeNames.push(pokeInfo.pokemon.name);
         const res = await fetch(pokeInfo.pokemon.url);
         const pokemon = await res.json();
-        // console.log(pokemon.id);
+        // console.log(pokemon.id); //put url into pokemon option!!!!!!!
         this.pokemon[pokemon.id] = pokemon;
         // this.createPokemon(pokemon);
       }
+      //include url down here???
     }
 
   }
@@ -86,15 +91,17 @@ class Pokelist {
     const typesArr = pokemon.types.map(el => el.type.name);
     const types = typesArr.join(" ")
 
+    //make a hidden urls tag
     const pokeInnerHTML = `
+    <button data-poke-id="${pokemon.id}">
       <div class="img-container">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png"
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
       </div>
       <div class="info">
         <span class="number">${pokemon.id}</span>
         <h3 class="name">${name}</h3>
-        <small class="type">Type: <span>${types}</span></small>
       </div>
+    </button>      
     `
 
     pokemonEl.innerHTML = pokeInnerHTML;

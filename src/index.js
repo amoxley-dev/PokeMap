@@ -1,6 +1,7 @@
 import Map from "./scripts/map.js";
 import Location from "./scripts/location.js";
 import Pokelist from "./scripts/pokelist.js";
+import Modal from "./scripts/modal.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log('loaded');
@@ -9,4 +10,5 @@ document.addEventListener("DOMContentLoaded", () => {
   let pokemonList = new Pokelist(pokeList);
   let locations = new Location(pokemonList);
   let map = new Map(bounds, locations);
+  // new Modal;
 });

@@ -1,5 +1,4 @@
 import { DICTIONARY } from "./dictionary";
-import Pokelist from "./pokelist.js";
 
 const routeOptions = {color: "#ffb552", weight: 2, opacity: 0.8, fillOpacity: 0.2};
 const routeHovOptions = {color: "#ff7333", weight: 3, opacity: 1, fillOpacity: 0.3};
@@ -77,7 +76,7 @@ class Locations {
 
     let func = (e) => {
       currentLoc = e.target;
-      // console.log(currentLoc.options.name);
+      
       if (currentLoc !== selectedLoc) {
         e.target.setStyle(options);
       }
@@ -139,11 +138,14 @@ class Locations {
   //click functions
   onClick(location) {
     let func = (e) => {
+      const h2 = document.querySelector(".clicked-location");
       if (prevLoc) {
         let reset = prevLoc.options.resetStlye
         prevLoc.setStyle(reset);
       }
       selectedLoc = currentLoc;
+      console.log(selectedLoc);
+      h2.innerHTML = selectedLoc.options.name;
       this.pokelist.populateList(selectedLoc);
       // console.log(selectedLoc);
       console.log(selectedLoc.options.urls);

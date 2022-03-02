@@ -15,10 +15,28 @@
   <h1>PokeMap</h1>
   <div id="main-content">
     <div class="pokemon-sidebar">
+      <h2 class="clicked-location">Select A Location</h2>
       <ul id="pokemon-list">
       </ul>
     </div>
     <div id="map"></div>
   </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="poke-image-container"></div>
+      <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="poke-name"></div>
+      <div class="type-img" id="type-1-img" hidden></div>
+      <div class="poke-type-1" hidden></div>
+      <div class="type-img" id="type-2-img" hidden></div>
+      <div class="poke-type-2" hidden></div>
+      <div class="poke-stats"></div>
+    </div>
+  </div>
+  <div id="overlay"></div>
+
 </body>
 </html>
