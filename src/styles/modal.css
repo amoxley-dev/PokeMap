@@ -8,10 +8,9 @@
   border-radius: 10px;
   z-index: 10;
   background-color: white;
-  width: 500px;
-  max-width: 80%;
+  width: 540px;
   max-height: 60%;
-  overflow: scroll;
+  display: flex;
 }
 
 .modal.active {
@@ -23,7 +22,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
 }
 
 .modal-header .poke-name {
@@ -38,6 +36,9 @@
   background: none;
   font-size: 1.25rem;
   font-weight: bold;
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 
 .modal-body {
@@ -62,7 +63,57 @@
   pointer-events: all;
 }
 
-.type-img > img{
+.type-img > img {
   height: 30px;
   width: 30px;
+  padding: 5px;
+}
+
+.poke-image-container {
+  height: 300px;
+  width: 300px;
+}
+
+.poke-image-container > img {
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-body > .poke-name {
+
+  border: 1px solid;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: larger;
+  margin-bottom: 3px;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.type-container {
+  border: 1px solid;
+  border-radius: 8px;
+  margin-bottom: 3px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 5px;
+}
+
+.type-unique {
+  margin: 0px 5px;
+}
+
+.poke-stats {
+  display: flex;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 5px;
+  height: 185px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-around;
 }

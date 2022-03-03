@@ -12,21 +12,25 @@ class Pokelist {
   async populateList(location) {
     if (!location) {return;} 
     
+    this.displayLoading();
+    
     this.pokeList.innerHTML = '';
     this.pokeNames = [];
     this.pokemon = {};
     const li = document.createElement('li')
     
     let locations = await this.getLocation(location);
-
+    
     console.log(locations);
     // console.log(!(locations instanceof Array))
     if (!(locations instanceof Array)) {
-      li.innerHTML = `No Pokemon at ${locations}`
+      li.innerHTML = `No Catcheable Pokemon At ${locations}`
       this.pokeList.append(li);
+      this.hideLoading();
       return;
     }
     
+
     for (let i = 0; i < locations.length; i++) { 
       let location = locations[i];
       await this.getPokemon(location.pokemon_encounters);
@@ -40,11 +44,10 @@ class Pokelist {
       this.createPokemon(this.pokemon[key])
     }
 
-    // new Modal;
     const openButtons = document.querySelectorAll("[data-poke-id]");
-    // console.log(openButtons);
-    // new Modal(openButtons);
+    
     this.createModality(openButtons);
+    this.hideLoading();
   }
   
   //get location
@@ -75,11 +78,9 @@ class Pokelist {
         this.pokeNames.push(pokeInfo.pokemon.name);
         const res = await fetch(pokeInfo.pokemon.url);
         const pokemon = await res.json();
-        // console.log(pokemon.id); //put url into pokemon option!!!!!!!
         this.pokemon[pokemon.id] = pokemon;
-        // this.createPokemon(pokemon);
+
       }
-      //include url down here???
     }
 
   }
@@ -99,7 +100,6 @@ class Pokelist {
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png">
       </div>
       <div class="info">
-        <span class="number">${pokemon.id}</span>
         <h3 class="name">${name}</h3>
       </div>
     </button>      
@@ -110,6 +110,20 @@ class Pokelist {
     this.pokeList.appendChild(pokemonEl);
   }
 
+  //Loading
+  displayLoading() {
+    const loader = document.querySelector("#loading");
+    loader.classList.add("display");
+    // to stop loading after some time
+    setTimeout(() => {
+        loader.classList.remove("display");
+    }, 5000);
+  }
+
+  hideLoading() {
+    const loader = document.querySelector("#loading");
+    loader.classList.remove("display");
+  }
 
 
   //modal stuff
@@ -156,11 +170,14 @@ class Pokelist {
 
   async openModal(modal, pokeId) {
     if (modal === null) return;
+
+    this.displayLoading();
     const url = `https://pokeapi.co/api/v2/pokemon/${pokeId}`;
     const pokemon = await this.modalPokemon(url);
   
     this.createModalPokemon(pokemon)
   
+    this.hideLoading();
     modal.classList.add('active');
     overlay.classList.add('active')
   }
@@ -197,34 +214,36 @@ class Pokelist {
     pokeStats.innerHTML = "";
     for (let i = 0; i < stats.length; i++) {
       let stat = stats[i];
-      let statName = document.createElement('p');
       let statNum = document.createElement('div');
-      statName.setAttribute("class", "stat-name");
       statNum.setAttribute("class", "stat-container");
-  
+      let statCap = stat.stat.name[0].toUpperCase() + stat.stat.name.slice(1);
+      
       let numInnerHTML = `
-        <div class="skills ${stat.stat.name}">${stat.base_stat}</div>
+        <div class="skills ${stat.stat.name}">${statCap}: ${stat.base_stat}</div>
       ` 
-  
-      statName.innerHTML = stat.stat.name;
       statNum.innerHTML = numInnerHTML;
       
-      pokeStats.appendChild(statName);
       pokeStats.appendChild(statNum);
     }
-  
+
+    const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+    const typeCap1 = type1[0].toUpperCase() + type1.slice(1);
+
     pokeImg.innerHTML = imgInnerHTML;
     typeImg1.innerHTML = `<img src="./src/images/${type1}.png">`
-    pokeType1.innerHTML = type1;
+    pokeType1.innerHTML = typeCap1;
     pokeType1.removeAttribute("hidden");
     typeImg1.removeAttribute("hidden");
+    pokeType2.hidden = true;
+    typeImg2.hidden = true;
     if (type2 !== null) { 
+      const typeCap2 = type2[0].toUpperCase() + type2.slice(1);
       typeImg2.innerHTML = `<img src="./src/images/${type2}.png">`
       typeImg2.removeAttribute("hidden");
-      pokeType2.innerHTML = type2;
+      pokeType2.innerHTML = typeCap2;
       pokeType2.removeAttribute("hidden");
     }
-    pokeName.innerHTML = pokemon.name;
+    pokeName.innerHTML = name;
   }
 }
 

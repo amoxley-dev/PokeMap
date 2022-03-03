@@ -62,10 +62,9 @@ table {
   border-radius: 10px;
   z-index: 10;
   background-color: white;
-  width: 500px;
-  max-width: 80%;
+  width: 540px;
   max-height: 60%;
-  overflow: scroll;
+  display: flex;
 }
 
 .modal.active {
@@ -77,7 +76,6 @@ table {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
 }
 
 .modal-header .poke-name {
@@ -92,6 +90,9 @@ table {
   background: none;
   font-size: 1.25rem;
   font-weight: bold;
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 
 .modal-body {
@@ -116,20 +117,77 @@ table {
   pointer-events: all;
 }
 
-.type-img > img{
+.type-img > img {
   height: 30px;
   width: 30px;
+  padding: 5px;
+}
+
+.poke-image-container {
+  height: 300px;
+  width: 300px;
+}
+
+.poke-image-container > img {
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-body > .poke-name {
+
+  border: 1px solid;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: larger;
+  margin-bottom: 3px;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.type-container {
+  border: 1px solid;
+  border-radius: 8px;
+  margin-bottom: 3px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 5px;
+}
+
+.type-unique {
+  margin: 0px 5px;
+}
+
+.poke-stats {
+  display: flex;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 5px;
+  height: 185px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-around;
 }
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/view.css ***!
   \***************************************************************************************************/
-h1 {
-  height: 60px;
+.logo-container {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-container > img {
+  width: 130px;
 }
 
 body {
   background-color: rgb(206, 60, 72);
   margin: 0px 30px;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 #main-content {
@@ -141,19 +199,93 @@ body {
 #map {
   width: 60%;
   height: 630px;
+  max-width: 1000px;
   border: 10px rgba(0, 0, 0, 0) solid;
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.5);
   z-index: 8;
 }
 
+/* loader */
+.loading-img {
+  height: 70px;
+  width: 70px;
+}
+
+#loading {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+#loading.display {
+  visibility: visible;
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+/*!******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/sidebar.css ***!
+  \******************************************************************************************************/
 .pokemon-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: flex-start;
+  align-items: flex-start;
   height: 630px;
+  max-width: 250px;
   width: 25%;
-  background: rgba(0, 0, 0, 0.5);
-  border: 10px rgba(0, 0, 0, 0) solid;
+  background: rgba(136, 127, 127, 0.5);
+  border: 5px rgba(0, 0, 0, 0) solid;
+  box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.5); 
   border-radius: 8px;
   overflow: scroll;
+}
+
+.pokemon > button {
+  box-sizing: border-box;
+  background-color: rgba(164, 141, 179, 0.5);
+  border: white 2px solid;
+  border-radius: 8px;
+}
+
+.clicked-location {
+  font-weight: bold;
+  text-align: center;
+  font-size: x-large;
+  margin-top: 5px;
+  color: rgb(255, 255, 255);
+}
+
+.pokemon > button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 2px white;
+  background-color: rgba(79, 61, 90, 0.75);
+  text-shadow: 0 0 2px rgb(255, 0, 0);
+}
+
+button > .info {
+  position: relative;
+  bottom: 10px;
+  color: ghostwhite;
+  -webkit-text-stroke-width: 0.4px;
+  -webkit-text-stroke-color: black;
 }
 
 .pokemon-sidebar::-webkit-scrollbar {
@@ -172,6 +304,9 @@ li {
   padding: 20px;
 }
 
+/* #pokemon-list li:only-child {
+  
+} */
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/

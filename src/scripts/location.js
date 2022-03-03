@@ -161,6 +161,8 @@ class Locations {
       this.onClick(location);
     }
   }
+
+  
 }
 
 export default Locations;

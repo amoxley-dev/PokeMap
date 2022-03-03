@@ -7,15 +7,27 @@
     <link rel="stylesheet" href="./dist/main.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <script src="./dist/main.js"></script>
     <title>PokeMap</title>
 
 </head>
 <body>
-  <h1>PokeMap</h1>
+  <header>
+    <div class="logo-container">
+      <img src="./src/images/logo.png" alt="">
+    </div>
+  </header>
+
+  <main>
   <div id="main-content">
     <div class="pokemon-sidebar">
       <h2 class="clicked-location">Select A Location</h2>
+      <div id="loading">
+        <img src="./src/images/pokeball.png" alt="pokeball" class="loading-img">
+      </div>
       <ul id="pokemon-list">
       </ul>
     </div>
@@ -24,19 +36,27 @@
 
   <div class="modal" id="modal">
     <div class="modal-header">
-      <div class="poke-image-container"></div>
       <button data-close-button class="close-button">&times;</button>
+      <div class="poke-image-container"></div>
     </div>
     <div class="modal-body">
       <div class="poke-name"></div>
-      <div class="type-img" id="type-1-img" hidden></div>
-      <div class="poke-type-1" hidden></div>
-      <div class="type-img" id="type-2-img" hidden></div>
-      <div class="poke-type-2" hidden></div>
+      <div class="type-container">
+        <div class="type-unique">
+          <div class="type-img" id="type-1-img" hidden></div>
+          <div class="poke-type-1" hidden></div>
+        </div>
+        <div class="type-unique">
+          <div class="type-img" id="type-2-img" hidden></div>
+          <div class="poke-type-2" hidden></div>
+        </div>
+      </div>
       <div class="poke-stats"></div>
     </div>
   </div>
   <div id="overlay"></div>
+
+  </main>
 
 </body>
 </html>

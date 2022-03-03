@@ -1,10 +1,17 @@
-h1 {
-  height: 60px;
+.logo-container {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-container > img {
+  width: 130px;
 }
 
 body {
   background-color: rgb(206, 60, 72);
   margin: 0px 30px;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 #main-content {
@@ -16,33 +23,41 @@ body {
 #map {
   width: 60%;
   height: 630px;
+  max-width: 1000px;
   border: 10px rgba(0, 0, 0, 0) solid;
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.5);
   z-index: 8;
 }
 
-.pokemon-sidebar {
-  height: 630px;
-  width: 25%;
-  background: rgba(0, 0, 0, 0.5);
-  border: 10px rgba(0, 0, 0, 0) solid;
-  border-radius: 8px;
-  overflow: scroll;
+/* loader */
+.loading-img {
+  height: 70px;
+  width: 70px;
 }
 
-.pokemon-sidebar::-webkit-scrollbar {
-  width: 10px;
-  height: 0;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.5);
+#loading {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+#loading.display {
+  visibility: visible;
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
 }
 
-.pokemon-sidebar::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background: #000;
-}
 
-li {
-  padding: 20px;
-}
+
+
