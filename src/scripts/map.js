@@ -1,9 +1,7 @@
 class Map {
   constructor(bounds, locations) {
-    console.log('map loaded')
     this.bounds = bounds;
     this.locations = locations;
-
     this.map = this.createMap(this.bounds);
     this.addLocations(this.locations.locations);
   }
@@ -27,7 +25,6 @@ class Map {
 
   addLocations(locations) {
     for (let i = 0; i < locations.length; i++) {
-      console.log('iterating')
       locations[i].addTo(this.map);
     }
   }

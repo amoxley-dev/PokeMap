@@ -144,11 +144,8 @@ class Locations {
         prevLoc.setStyle(reset);
       }
       selectedLoc = currentLoc;
-      console.log(selectedLoc);
       h2.innerHTML = selectedLoc.options.name;
       this.pokelist.populateList(selectedLoc);
-      // console.log(selectedLoc);
-      console.log(selectedLoc.options.urls);
       e.target.setStyle(selectedOptions)
       prevLoc = selectedLoc;
     }

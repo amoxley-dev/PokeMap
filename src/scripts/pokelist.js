@@ -1,36 +1,25 @@
-import Modal from "./pokelist.js";
-
 class Pokelist {
   constructor(pokeList) {
     this.pokeList = pokeList
-    console.log("pokeList Loaded")
-    //causes stackoverflow when not in index.js
-    // new Modal;
     this.populateList();
   }
   
   async populateList(location) {
     if (!location) {return;} 
-    
+
     this.displayLoading();
-    
     this.pokeList.innerHTML = '';
     this.pokeNames = [];
     this.pokemon = {};
     const li = document.createElement('li')
     
     let locations = await this.getLocation(location);
-    
-    console.log(locations);
-    // console.log(!(locations instanceof Array))
     if (!(locations instanceof Array)) {
       li.innerHTML = `No Catcheable Pokemon At ${locations}`
       this.pokeList.append(li);
       this.hideLoading();
       return;
     }
-    
-
     for (let i = 0; i < locations.length; i++) { 
       let location = locations[i];
       await this.getPokemon(location.pokemon_encounters);
@@ -38,14 +27,12 @@ class Pokelist {
         
     this.pokemon.sort;
     const pokeId = Object.keys(this.pokemon);
-
     for (let i = 0; i < pokeId.length; i++) {
       let key = pokeId[i];
       this.createPokemon(this.pokemon[key])
     }
 
     const openButtons = document.querySelectorAll("[data-poke-id]");
-    
     this.createModality(openButtons);
     this.hideLoading();
   }
