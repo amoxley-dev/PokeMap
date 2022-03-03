@@ -58,10 +58,10 @@ table {
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border: 1px solid black;
+  box-shadow: 0px 0px 0px 10px rgba(0,0,0,0.5);
   border-radius: 10px;
   z-index: 10;
-  background-color: white;
+  background-color: rgb(218 212 247);
   width: 540px;
   max-height: 60%;
   display: flex;
@@ -71,6 +71,11 @@ table {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.poke-image-container > img, .poke-name, .type-container, .poke-stats {
+  background-color: white;
+  box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.5);
+}
+
 .modal-header {
   padding: 10px 15px;
   display: flex;
@@ -78,10 +83,6 @@ table {
   align-items: center;
 }
 
-.modal-header .poke-name {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
 
 .modal-header .close-button {
   cursor: pointer;
@@ -117,11 +118,7 @@ table {
   pointer-events: all;
 }
 
-.type-img > img {
-  height: 30px;
-  width: 30px;
-  padding: 5px;
-}
+
 
 .poke-image-container {
   height: 300px;
@@ -129,15 +126,13 @@ table {
 }
 
 .poke-image-container > img {
-  border: 1px solid black;
   border-radius: 8px;
   height: 100%;
   width: 100%;
 }
 
 .modal-body > .poke-name {
-
-  border: 1px solid;
+  
   border-radius: 8px;
   font-weight: bold;
   font-size: larger;
@@ -148,7 +143,6 @@ table {
 }
 
 .type-container {
-  border: 1px solid;
   border-radius: 8px;
   margin-bottom: 3px;
   display: flex;
@@ -161,9 +155,22 @@ table {
   margin: 0px 5px;
 }
 
+.type-img {
+  text-align: center;
+}
+
+.type-img > img {
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+}
+
+.poke-type-1, .poke-type-2 {
+  text-align: center;
+}
+
 .poke-stats {
   display: flex;
-  border: 1px solid;
   border-radius: 8px;
   padding: 5px;
   height: 185px;
@@ -174,18 +181,42 @@ table {
 /*!***************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/view.css ***!
   \***************************************************************************************************/
-.logo-container {
-  padding: 8px;
+header {
+  padding: 10px;
+  position: relative;
   display: flex;
+  align-content: center;
   justify-content: center;
 }
 
+/* .logo-container {
+
+} */
+
 .logo-container > img {
-  width: 130px;
+  width: 125px;
+}
+
+.brand-icons {
+  width: 5%;
+  position: absolute;
+  left: 85%;
+  font-size: x-large;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.icon {
+  color: rgba(95, 83, 83, 0.75);
+}
+
+.icon:hover {
+  color: rgba(95, 83, 83, 1);
 }
 
 body {
-  background-color: rgb(206, 60, 72);
+  background-color: #BFFFFF;
   margin: 0px 30px;
   font-family: 'Noto Sans', sans-serif;
 }
@@ -193,15 +224,16 @@ body {
 #main-content {
   height: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 #map {
   width: 60%;
   height: 630px;
   max-width: 1000px;
-  border: 10px rgba(0, 0, 0, 0) solid;
-  border-radius: 8px;
+  /* border: 4px rgba(0, 0, 0, 0) solid; */
+  box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.5); 
+  border-radius: 6px;
   background: rgba(0, 0, 0, 0.5);
   z-index: 8;
 }
@@ -251,16 +283,16 @@ body {
   height: 630px;
   max-width: 250px;
   width: 25%;
-  background: rgba(136, 127, 127, 0.5);
-  border: 5px rgba(0, 0, 0, 0) solid;
+  background: #5c6e6e7e;
+  /* border: 5px rgba(0, 0, 0, 0) solid; */
   box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.5); 
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: scroll;
 }
 
 .pokemon > button {
   box-sizing: border-box;
-  background-color: rgba(164, 141, 179, 0.5);
+  background-color: rgba(230, 255, 128, 0.3);
   border: white 2px solid;
   border-radius: 8px;
 }
@@ -271,21 +303,25 @@ body {
   font-size: x-large;
   margin-top: 5px;
   color: rgb(255, 255, 255);
+  background-color: rgb(7, 42, 124);
+  max-width: 120px;
+  border-radius: 8px;
+  padding: 4px 50px;
+  position: absolute;
+  z-index: 7;
 }
 
 .pokemon > button:hover {
   cursor: pointer;
   box-shadow: 0 0 0 2px white;
-  background-color: rgba(79, 61, 90, 0.75);
-  text-shadow: 0 0 2px rgb(255, 0, 0);
+  background-color: rgba(167, 190, 74, 0.75);
+  text-shadow: 0 0 2px rgb(255, 60, 0);
 }
 
 button > .info {
   position: relative;
   bottom: 10px;
-  color: ghostwhite;
-  -webkit-text-stroke-width: 0.4px;
-  -webkit-text-stroke-color: black;
+  color: rgb(0, 0, 0);
 }
 
 .pokemon-sidebar::-webkit-scrollbar {
@@ -302,6 +338,10 @@ button > .info {
 
 li {
   padding: 20px;
+}
+
+li:first-child {
+  margin-top: 50px;
 }
 
 /* #pokemon-list li:only-child {

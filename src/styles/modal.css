@@ -4,10 +4,10 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border: 1px solid black;
+  box-shadow: 0px 0px 0px 10px rgba(0,0,0,0.5);
   border-radius: 10px;
   z-index: 10;
-  background-color: white;
+  background-color: rgb(218 212 247);
   width: 540px;
   max-height: 60%;
   display: flex;
@@ -17,6 +17,11 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
+.poke-image-container > img, .poke-name, .type-container, .poke-stats {
+  background-color: white;
+  box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.5);
+}
+
 .modal-header {
   padding: 10px 15px;
   display: flex;
@@ -24,10 +29,6 @@
   align-items: center;
 }
 
-.modal-header .poke-name {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
 
 .modal-header .close-button {
   cursor: pointer;
@@ -63,11 +64,7 @@
   pointer-events: all;
 }
 
-.type-img > img {
-  height: 30px;
-  width: 30px;
-  padding: 5px;
-}
+
 
 .poke-image-container {
   height: 300px;
@@ -75,15 +72,13 @@
 }
 
 .poke-image-container > img {
-  border: 1px solid black;
   border-radius: 8px;
   height: 100%;
   width: 100%;
 }
 
 .modal-body > .poke-name {
-
-  border: 1px solid;
+  
   border-radius: 8px;
   font-weight: bold;
   font-size: larger;
@@ -94,7 +89,6 @@
 }
 
 .type-container {
-  border: 1px solid;
   border-radius: 8px;
   margin-bottom: 3px;
   display: flex;
@@ -107,9 +101,22 @@
   margin: 0px 5px;
 }
 
+.type-img {
+  text-align: center;
+}
+
+.type-img > img {
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+}
+
+.poke-type-1, .poke-type-2 {
+  text-align: center;
+}
+
 .poke-stats {
   display: flex;
-  border: 1px solid;
   border-radius: 8px;
   padding: 5px;
   height: 185px;

@@ -8,16 +8,16 @@
   height: 630px;
   max-width: 250px;
   width: 25%;
-  background: rgba(136, 127, 127, 0.5);
-  border: 5px rgba(0, 0, 0, 0) solid;
+  background: #5c6e6e7e;
+  /* border: 5px rgba(0, 0, 0, 0) solid; */
   box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.5); 
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: scroll;
 }
 
 .pokemon > button {
   box-sizing: border-box;
-  background-color: rgba(164, 141, 179, 0.5);
+  background-color: rgba(230, 255, 128, 0.3);
   border: white 2px solid;
   border-radius: 8px;
 }
@@ -28,21 +28,25 @@
   font-size: x-large;
   margin-top: 5px;
   color: rgb(255, 255, 255);
+  background-color: rgb(7, 42, 124);
+  max-width: 120px;
+  border-radius: 8px;
+  padding: 4px 50px;
+  position: absolute;
+  z-index: 7;
 }
 
 .pokemon > button:hover {
   cursor: pointer;
   box-shadow: 0 0 0 2px white;
-  background-color: rgba(79, 61, 90, 0.75);
-  text-shadow: 0 0 2px rgb(255, 0, 0);
+  background-color: rgba(167, 190, 74, 0.75);
+  text-shadow: 0 0 2px rgb(255, 60, 0);
 }
 
 button > .info {
   position: relative;
   bottom: 10px;
-  color: ghostwhite;
-  -webkit-text-stroke-width: 0.4px;
-  -webkit-text-stroke-color: black;
+  color: rgb(0, 0, 0);
 }
 
 .pokemon-sidebar::-webkit-scrollbar {
@@ -59,6 +63,10 @@ button > .info {
 
 li {
   padding: 20px;
+}
+
+li:first-child {
+  margin-top: 50px;
 }
 
 /* #pokemon-list li:only-child {

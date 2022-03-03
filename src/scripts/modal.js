@@ -102,7 +102,8 @@ class Modal {
       pokeStats.appendChild(statName);
       pokeStats.appendChild(statNum);
     }
-  
+    
+    typeImg2.hidden = true;
     pokeImg.innerHTML = imgInnerHTML;
     typeImg1.innerHTML = `<img src="./images/${type1}.png">`
     pokeType1.innerHTML = type1;
