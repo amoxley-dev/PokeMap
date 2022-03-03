@@ -84,7 +84,7 @@ Making the selected area stay visually selected until another area was selected 
 
 <img width="809" alt="modal window" src="https://raw.githubusercontent.com/amoxley-dev/PokeMap/main/.github/pokemap_modal.jpg">
 
-## Implementation Timeline
+# Implementation Timeline
 
 - Day 1: Research Leaflet/css to understand how to create an interactable map.
 - Day 2: Have a map that correctly sends back coordinates clicked on. Add hover on/off and click listening events.
@@ -94,7 +94,7 @@ Making the selected area stay visually selected until another area was selected 
 - Day 6: Clean up modal window functionality and begin styling
 - Day 7: Impliment finishing styling and clean up code.
 
-## Future Feature
+# Future Features
 
 - Add encounter data to Pokemon window.
 - Add stat visualization.
