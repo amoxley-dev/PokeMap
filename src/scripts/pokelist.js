@@ -187,9 +187,7 @@ class Pokelist {
     const pokeType2 = document.querySelector(".poke-type-2");
     const typeImg2 = document.querySelector("#type-2-img");
     const pokeStats = document.querySelector(".poke-stats");
-  
-    console.log(pokeStats);
-  
+
     const imgInnerHTML = `
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png">
     `;
