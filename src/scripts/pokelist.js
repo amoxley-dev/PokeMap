@@ -115,9 +115,9 @@ class Pokelist {
     const loader = document.querySelector("#loading");
     loader.classList.add("display");
     // to stop loading after some time
-    setTimeout(() => {
-        loader.classList.remove("display");
-    }, 5000);
+    // setTimeout(() => {
+    //     loader.classList.remove("display");
+    // }, 5000);
   }
 
   hideLoading() {
