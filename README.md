@@ -19,7 +19,7 @@ PokeMap is an interactive Pokemon map where the user can see which pokemon are c
 ## Populating the sidebar
 
 
-Getting the sidebar to populate correctly required first fetching a list of pokemon from the locationURL, then getting each Pokemon from that list in an array then ordering them by id. This is needed because in certain areas there can be multiple floors in game and each floor can have the different pokemon. So if the Pokemon grabbed were in just the order put in by the locations the list of Pokemon could be out of order. After the Pokemon were put in order then they the program iterates through the list of Pokemon and populates the sidebar with the name and sprite.
+Getting the sidebar to populate correctly required several steps. First, fetching a list of pokemon from the locationURL, then getting each Pokemon from that list in an array, and then uniquely ordering them by id. This is needed because there are a few locations where there are multiple floors and each floor can have the different pokemon. So if the Pokemon grabbed were in just the order put in by the locations the list of Pokemon could be out of order and have duplicates. After the Pokemon are put in order then the program iterates through the list of Pokemon and populates the sidebar with the name and sprite.
 
 ``` javascript
 // src/scripts/pokelist.js
@@ -60,7 +60,7 @@ async populateList(location) {
 
 ## Highlight the selected location
 
-Making the selected area stay visually selected until another area was selected was challenging. The leaflet hover on/off event would reset the color and borders of a selected area even if it was selected. SO in order to have a selected area stay selected even if the user hovered off I set a check in the hover on/off event to see if the place is the selected location, if it is then the hover on/off event doesn't occur. However, this posed another problem. When the use would click on another item the last location would still be highlighted. So I created a previous location variable that stores location data of the selected location and when another location is selected the previous location resets it's style to what it originally was. 
+Making the selected area stay visually selected until another area was selected required several steps. The leaflet hover on/off event would reset the color and borders of a selected area, even if it was selected. In order to have a selected area stay selected even if the user hovered off the program has a check in the hover on/off event to see if the place is the selected location, if it is then the hover on/off event doesn't occur. However, this posed another problem. When the user would click on another location the last location would still be highlighted. The program now stores a previous location variable that stores location data of the selected location and when another location is selected the previous location resets it's style to what it originally was. 
 
 ``` javascript
   onClick(location) {
@@ -89,7 +89,7 @@ Making the selected area stay visually selected until another area was selected 
 - Day 1: Research Leaflet/css to understand how to create an interactable map.
 - Day 2: Have a map that correctly sends back coordinates clicked on. Add hover on/off and click listening events.
 - Day 3: Create location DICTIONARY for PokeList sidedar poulation.
-- Day 4: Add populate sidebar functionality depending on what location was clicked.
+- Day 4: Add populate sidebar functionality depending on which location was clicked.
 - Day 5: Create modal window for clicked pokemon.
 - Day 6: Clean up modal window functionality and begin styling
 - Day 7: Impliment finishing styling and clean up code.
